@@ -1,0 +1,203 @@
+%% Created by Maple 18.02, Mac OS X
+%% Source Worksheet: spring.mw
+%% Generated: Mon Aug 21 10:20:38 JST 2017
+\documentclass{article}
+\usepackage{maplestd2e}
+\def\emptyline{\vspace{12pt}}
+\begin{document}
+\pagestyle{empty}
+\DefineParaStyle{Maple Bullet Item}
+\DefineParaStyle{Maple Heading 1}
+\DefineParaStyle{Maple Warning}
+\DefineParaStyle{Maple Heading 4}
+\DefineParaStyle{Maple Heading 2}
+\DefineParaStyle{Maple Heading 3}
+\DefineParaStyle{Maple Dash Item}
+\DefineParaStyle{Maple Error}
+\DefineParaStyle{Maple Title}
+\DefineParaStyle{Maple Text Output}
+\DefineParaStyle{Maple Normal}
+\DefineCharStyle{Maple 2D Output}
+\DefineCharStyle{Maple 2D Input}
+\DefineCharStyle{Maple Maple Input}
+\DefineCharStyle{Maple 2D Math}
+\DefineCharStyle{Maple Hyperlink}
+\section{\textbf{バネの振動(Euler)}}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{Euler3 := proc (x_i, v_i)
+  local v_ip1, x_ip1;
+  global k, cc, dx;
+  v_ip1 := v_i + (- k * x_i) * dt;
+  x_ip1 := x_i + v_i * dt;
+  return x_ip1, v_ip1;
+end;
+}{}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{Euler3 := proc (x_i, v_i) local v_ip1, x_ip1; global k, cc, dx; v_ip1 := v_i-k*x_i*dt; x_ip1 := x_i+v_i*dt; return x_ip1, v_ip1 end proc}{\[\displaystyle {\it Euler3}\, := \,\textbf{proc} (x_iv_i) \\
+\textbf{local} \,v_ip1,\,x_ip1; \\
+\textbf{global} \,k,\,cc,\,dx; \\
+\mapleIndent{1} v_ip1\,:=\,v_i-k \ast x_i \ast dt;\\
+\mapleIndent{1} x_ip1\,:=\,x_i + v_i \ast dt;\\
+\mapleIndent{1} \textbf{return}\,x_ip1,\,v_ip1\\
+\textbf{end\ proc};\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{dt:=0.1;k:=0.01;
+vv:=[0.01];
+xx:=[0]; 
+for i from 2 to 4000 do
+  x, y := Euler3(xx[i-1],vv[i-1]);
+  xx :=[op(xx),x]; 
+  vv :=[op(vv),y]; 
+end do:
+}{}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{dt := .1}{\[\displaystyle {\it dt}\, := \, 0.1\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{k := 0.1e-1}{\[\displaystyle k\, := \, 0.01\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{vv := [0.1e-1]}{\[\displaystyle {\it vv}\, := \,[ 0.01]\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{xx := [0]}{\[\displaystyle {\it xx}\, := \,[0]\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{with(plots):
+listplot(xx);listplot(vv);
+}{}
+\end{mapleinput}
+\mapleresult
+\mapleplot{springplot2d1.eps}
+\mapleresult
+\mapleplot{springplot2d2.eps}
+\end{maplegroup}
+\section{\textbf{バネの振動(Runge-Kutta)}}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{restart;
+
+}{}
+\end{mapleinput}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{ff := (t,x,v)-> v;
+gg := (t,x,v)-> -k*x;
+}{}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{ff := proc (t, x, v) options operator, arrow; v end proc}{\[\displaystyle {\it ff}\, := \,( {t,x,v} )\mapsto v\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{gg := proc (t, x, v) options operator, arrow; -k*x end proc}{\[\displaystyle {\it gg}\, := \,( {t,x,v} )\mapsto -kx\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{RungeKutta2 := proc(x_i,y_i,z_i)
+local h,k1,l1,k2,l2,k3,l3,k4,l4,kk,ll;
+global dx;
+h := dx;
+k1:= h * ff(x_i, y_i, z_i);
+l1:= h * gg(x_i, y_i, z_i);
+k2:= h*ff(x_i+h/2, y_i+k1/2, z_i+l1/2);
+l2:= h*gg(x_i+h/2, y_i+k1/2, z_i+l1/2);
+k3:= h*ff(x_i+h/2, y_i+k2/2, z_i+l2/2);
+l3:= h*gg(x_i+h/2, y_i+k2/2, z_i+l2/2);
+k4:= h*ff(x_i+h, y_i+k3, z_i+l3);
+l4:= h*gg(x_i+h, y_i+k3, z_i+l3);
+kk := 1/6*(k1+2*k2+2*k3+k4);
+ll := 1/6*(l1+2*l2+2*l3+l4);
+return kk,ll;
+end:
+}{}
+\end{mapleinput}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{Euler2 := proc (x_i, v_i)
+  local v_ip1, x_ip1, kk, ll;
+  kk,ll := RungeKutta2(0,x_i,v_i);
+  x_ip1:= x_i+kk;
+  v_ip1:= v_i+ll;
+  return x_ip1, v_ip1;
+end;
+}{}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{Euler2 := proc (x_i, v_i) local v_ip1, x_ip1, kk, ll; kk, ll := RungeKutta2(0, x_i, v_i); x_ip1 := x_i+kk; v_ip1 := v_i+ll; return x_ip1, v_ip1 end proc}{\[\displaystyle {\it Euler2}\, := \,\textbf{proc} (x_iv_i) \\
+\textbf{local} \,v_ip1,\,x_ip1,\,kk,\,ll; \\
+\mapleIndent{1} kk,\,ll\,:=\,\mathit{RungeKutta2} (0,\,x_i,\,v_i);\\
+\mapleIndent{1} x_ip1\,:=\,x_i + kk;\\
+\mapleIndent{1} v_ip1\,:=\,v_i + ll;\\
+\mapleIndent{1} \textbf{return}\,x_ip1,\,v_ip1\\
+\textbf{end\ proc};\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{dx:=0.1;k:=0.01;cc:=0.0;
+vv:=[0.01];
+xx:=[0]; 
+for i from 2 to 4000 do
+  x, y := Euler2(xx[i-1],vv[i-1]);
+  xx :=[op(xx),x]; 
+  vv :=[op(vv),y]; 
+end do:
+}{}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{dx := .1}{\[\displaystyle {\it dx}\, := \, 0.1\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{k := 0.1e-1}{\[\displaystyle k\, := \, 0.01\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{cc := 0.}{\[\displaystyle {\it cc}\, := \, 0.0\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{vv := [0.1e-1]}{\[\displaystyle {\it vv}\, := \,[ 0.01]\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{xx := [0]}{\[\displaystyle {\it xx}\, := \,[0]\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{with(plots):
+listplot(xx);listplot(vv);
+}{}
+\end{mapleinput}
+\mapleresult
+\mapleplot{springplot2d3.eps}
+\mapleresult
+\mapleplot{springplot2d4.eps}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{}{}
+\end{mapleinput}
+\end{maplegroup}
+\end{document}
