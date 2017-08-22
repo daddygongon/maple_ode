@@ -306,7 +306,17 @@
 
 {3.5~~}連立方程式にRunge-Kutta4次公式を
 
-{4~~}電気回路の応答
+{4~~}RLC回路の応答
+
+{5~~}課題
+
+{5.1~~}雨粒
+
+{5.2~~}大砲
+
+{5.3~~}RLC回路
+
+{5.4~~}RLC回路
 
     \section{Euler法，Runge-Kutta法による微分方程式解法}\label{eulerux6cd5runge-kuttaux6cd5ux306bux3088ux308bux5faeux5206ux65b9ux7a0bux5f0fux89e3ux6cd5}
 
@@ -738,9 +748,9 @@ g(x,y,z) & g(t,x,v) = -k x\tabularnewline
 
 発散も収束もすることなく，定常的に振動を繰り返していることが見て取れます．
 
-    \section{電気回路の応答}\label{ux96fbux6c17ux56deux8defux306eux5fdcux7b54}
+    \section{RLC回路の応答}\label{rlcux56deux8defux306eux5fdcux7b54}
 
-電気回路の応答を考えましょう．LRCをふたつずつ組み合わせてみていくのが常套手段なんですが，一個ずつだと面倒なので，まずは全部入れた方程式を立てます．そこからパラメータを変えて回路の挙動を観察します．こんなとこから進めていけるのが，数値計算の利点です．どんなんでも解けるから．でも，誤差は積もるよ．．．それは後で議論します．
+電気回路の応答を考えましょう．R(resistor,抵抗)L(inductor,コイル)C(capacitor,コンデンサー)をそれぞれふたつずつ組み合わせてみていくのが常套手段なんですが，一個ずつだと面倒なので，まずは全部入れた方程式を立てます．そこからパラメータを変えて回路の挙動を観察します．こんなとこから進めていけるのが，数値計算の利点です．どんなんでも解けるから．
 
 コンデンサに蓄えられた電荷を\(Q(t)\),
 回路に流れる電流を\(I(t)\)とします．
@@ -774,17 +784,105 @@ v \rightarrow i \\
 x \rightarrow q
 \] と置き換えれば良さそうです．
 
-そうするとアルゴリズムは，
+そうするとアルゴリズムは， \[
+\begin{aligned}
+i_{i+1} & = i_i + (V - RR \, i_i -qc \, q_i) \, dt \\
+q_{i+1} & = q_i + i_i \, dt;
+\end{aligned}
+\] となりそうです．RRやqcには適当に規格化した値をいれます．
 
-\begin{verbatim}
-v_ip1 = v_i 
-q_ip1 = q_i + 
-\end{verbatim}
+\begin{figure}[htbp]
+\centering
+\includegraphics{../figs/ode.005.jpeg}
+\caption{rlc\_circuit}
+\end{figure}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} 
+{\color{incolor}In [{\color{incolor} }]:} \PY{n}{restart}\PY{p}{;}
+        \PY{n+no}{Euler2} \PY{p}{:}\PY{o}{=} \PY{n+nb}{proc} \PY{p}{(}\PY{n}{q\PYZus{}i}\PY{p}{,} \PY{n}{i\PYZus{}i}\PY{p}{)}
+          \PY{n}{local} \PY{n}{q\PYZus{}ip1}\PY{p}{,} \PY{n}{i\PYZus{}ip1}\PY{p}{;}
+          \PY{n}{global} \PY{n}{dt}\PY{p}{,} \PY{n+no}{RR}\PY{p}{,} \PY{n}{qc}\PY{p}{;}
+          \PY{n}{i\PYZus{}ip1} \PY{p}{:}\PY{o}{=} \PY{n}{i\PYZus{}i} \PY{o}{+} \PY{p}{(}\PY{n}{V} \PY{o}{\PYZhy{}} \PY{n+no}{RR} \PY{o}{*} \PY{n}{i\PYZus{}i} \PY{o}{\PYZhy{}} \PY{n}{qc} \PY{o}{*} \PY{n}{q\PYZus{}i}\PY{p}{)} \PY{o}{*} \PY{n}{dt}\PY{p}{;}
+          \PY{n}{q\PYZus{}ip1} \PY{p}{:}\PY{o}{=} \PY{n}{q\PYZus{}i} \PY{o}{+} \PY{n}{i\PYZus{}i} \PY{o}{*} \PY{n}{dt}\PY{p}{;}
+          \PY{k}{return} \PY{n}{q\PYZus{}ip1}\PY{p}{,} \PY{n}{i\PYZus{}ip1}\PY{p}{;}
+        \PY{k}{end}\PY{p}{;}
 \end{Verbatim}
 
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{l+s+ss}{dt}\PY{p}{:}\PY{o}{=}\PY{l+m+mi}{0}\PY{o}{.}\PY{l+m+mo}{01}\PY{p}{;}\PY{l+s+ss}{RR}\PY{p}{:}\PY{o}{=}\PY{l+m+mi}{0}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{;}\PY{l+s+ss}{qc}\PY{p}{:}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{;}\PY{l+s+ss}{V}\PY{p}{:}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{;}
+        \PY{l+s+ss}{ii}\PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{l+m+mi}{0}\PY{o}{]}\PY{p}{;}
+        \PY{l+s+ss}{qq}\PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{l+m+mi}{0}\PY{o}{]}\PY{p}{;} 
+        \PY{k}{for} \PY{n}{i} \PY{n}{from} \PY{l+m+mi}{2} \PY{n}{to} \PY{l+m+mi}{2000} \PY{k}{do}
+          \PY{n}{q}\PY{p}{,} \PY{n}{i2} \PY{p}{:}\PY{o}{=} \PY{n+no}{Euler2}\PY{p}{(}\PY{n}{qq}\PY{o}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{]}\PY{p}{,}\PY{n}{ii}\PY{o}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{]}\PY{p}{)}\PY{p}{;}
+          \PY{n}{qq} \PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{n}{op}\PY{p}{(}\PY{n}{qq}\PY{p}{)}\PY{p}{,}\PY{n}{q}\PY{o}{]}\PY{p}{;} 
+          \PY{n}{ii} \PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{n}{op}\PY{p}{(}\PY{n}{ii}\PY{p}{)}\PY{p}{,}\PY{n}{i2}\PY{o}{]}\PY{p}{;} 
+        \PY{k}{end} \PY{k}{do}\PY{p}{:}
+        \PY{n}{with}\PY{p}{(}\PY{n}{plots}\PY{p}{)}\PY{p}{:}
+        \PY{n}{listplot}\PY{p}{(}\PY{n}{qq}\PY{p}{)}\PY{p}{;}\PY{n}{listplot}\PY{p}{(}\PY{n}{ii}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    コンデンサー(\(C\)),コンダクター(\(L\))を1として，抵抗値を0.5として，入力電圧を1Vと設定してコンデンサーにたまる電荷と電流の変化を確かめたのが次の図です．
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{../figs/rlc_circuitplot2d1.jpg}
+\caption{rlc\_circuit\_q\_plot}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{../figs/rlc_circuitplot2d2.jpg}
+\caption{rlc\_circuit\_i\_plot}
+\end{figure}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{l+s+ss}{dt}\PY{p}{:}\PY{o}{=}\PY{l+m+mi}{0}\PY{o}{.}\PY{l+m+mo}{01}\PY{p}{;}\PY{l+s+ss}{RR}\PY{p}{:}\PY{o}{=}\PY{l+m+mi}{0}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{;}\PY{l+s+ss}{qc}\PY{p}{:}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{;}\PY{l+s+ss}{V}\PY{p}{:}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{;}
+        \PY{l+s+ss}{ii}\PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{l+m+mi}{0}\PY{o}{]}\PY{p}{;}
+        \PY{l+s+ss}{qq}\PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{l+m+mi}{1}\PY{o}{]}\PY{p}{;} 
+        \PY{k}{for} \PY{n}{i} \PY{n}{from} \PY{l+m+mi}{2} \PY{n}{to} \PY{l+m+mi}{2000} \PY{k}{do}
+          \PY{n}{q}\PY{p}{,} \PY{n}{i2} \PY{p}{:}\PY{o}{=} \PY{n+no}{Euler2}\PY{p}{(}\PY{n}{qq}\PY{o}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{]}\PY{p}{,}\PY{n}{ii}\PY{o}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{]}\PY{p}{)}\PY{p}{;}
+          \PY{n}{qq} \PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{n}{op}\PY{p}{(}\PY{n}{qq}\PY{p}{)}\PY{p}{,}\PY{n}{q}\PY{o}{]}\PY{p}{;} 
+          \PY{n}{ii} \PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{n}{op}\PY{p}{(}\PY{n}{ii}\PY{p}{)}\PY{p}{,}\PY{n}{i2}\PY{o}{]}\PY{p}{;} 
+        \PY{k}{end} \PY{k}{do}\PY{p}{:}
+        \PY{n}{with}\PY{p}{(}\PY{n}{plots}\PY{p}{)}\PY{p}{:}
+        \PY{n}{listplot}\PY{p}{(}\PY{n}{qq}\PY{p}{)}\PY{p}{;}\PY{n}{listplot}\PY{p}{(}\PY{n}{ii}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    入力電圧を0V，コンデンサーにあらかじめ1クーロン貯めたと設定して電荷と電流の時間変化を確かめたのが次の図です．
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{../figs/rlc_circuitplot2d3.jpg}
+\caption{rlc\_circuit\_q\_plot}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{../figs/rlc_circuitplot2d4.jpg}
+\caption{rlc\_circuit\_i\_plot}
+\end{figure}
+
+    \section{課題}\label{ux8ab2ux984c}
+
+\subsection{雨粒}\label{ux96e8ux7c92}
+
+空気抵抗を受ける雨粒の速度の変化を自分の言葉で説明しなさい．
+
+\subsection{大砲}\label{ux5927ux7832}
+
+free
+fallの初期設定を変えて，x=0から鉛直方向にv=1で投げ上げたボールの時間変化を示しなさい．
+
+\subsection{RLC回路}\label{rlcux56deux8def}
+
+抵抗が0の場合の電荷，電流の変化を確認しなさい．
+
+\subsection{RLC回路}\label{rlcux56deux8def-1}
+
+抵抗が0の場合にも，エネルギー保存が成り立つようにコードを改良しなさい．
 
 
     % Add a bibliography block to the postdoc

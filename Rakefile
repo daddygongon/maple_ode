@@ -29,14 +29,6 @@ def convert_eps(file)
   system command
 end
 
-desc 'mk whole size dependency plot'
-task :mk_whole do
-  p pwd = Dir.getwd
-  Dir.chdir('../data/find_min')
-  system './find_min gnuplot_svg all'
-  FileUtils.cp('tmp.svg', pwd)
-end
-
 RE_FIGS_EXT = /(.+\.jpg)|(.+\.jpeg)|(.+\.png)/
 desc 'mk latex FILE, stored in latex dir'
 task :mk_latex do

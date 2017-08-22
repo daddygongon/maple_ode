@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  22 AUG 2017 14:17
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  22 AUG 2017 17:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -995,76 +995,77 @@ LaTeX Font Info:    Try loading font information for T1+cmss on input line 283.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Try loading font information for TS1+ppl on input line 316.
+LaTeX Font Info:    Try loading font information for TS1+ppl on input line 326.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 325.
+(Font)              scaled to size 11.53198pt on input line 335.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 325.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 7.30359pt on input line 329.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 329.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 329.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 329.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 329.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 329.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 329.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 329.
+(Font)              scaled to size 11.53198pt on input line 335.
  [1
 
 ]
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 7.30359pt on input line 339.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 339.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 339.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 339.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 339.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 339.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 339.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 339.
 File: ../figs/ode.002.jpeg Graphic file (type bmp)
 
 <../figs/ode.002.jpeg> [2]
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 388.
+(Font)              scaled to size 9.60999pt on input line 398.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 388.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 388.
+(Font)              scaled to size 9.60999pt on input line 398.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 398.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 394.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 404.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 394.
+(Font)              scaled to size 9.60999pt on input line 404.
 LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 394.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 404.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 394.
+(Font)              scaled to size 9.60999pt on input line 404.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 394.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 404.
  [3]
 File: ../figs/Euler_ball_dropplot2d1.jpg Graphic file (type bmp)
 
 <../figs/Euler_ball_dropplot2d1.jpg>
 File: ../figs/Euler_ball_dropplot2d2.jpg Graphic file (type bmp)
  <../figs/Euler_ball_dropplot2d2.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 421--423
+Overfull \hbox (56.48936pt too wide) in paragraph at lines 431--433
 [][] [] 
  []
 
+[4]
 File: ../figs/ode.003.jpeg Graphic file (type bmp)
-<../figs/ode.003.jpeg> [4]
+ <../figs/ode.003.jpeg>
 File: ../figs/Euler_ball_dropplot2d4.jpg Graphic file (type bmp)
  <../figs/Euler_ball_dropplot2d4.jpg>
 File: ../figs/Euler_ball_dropplot2d3.jpg Graphic file (type bmp)
 
 <../figs/Euler_ball_dropplot2d3.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 460--462
+Overfull \hbox (56.48936pt too wide) in paragraph at lines 470--472
 [][] [] 
  []
 
@@ -1076,41 +1077,63 @@ File: ../figs/springplot2d1.jpg Graphic file (type bmp)
 File: ../figs/springplot2d2.jpg Graphic file (type bmp)
 
 <../figs/springplot2d2.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 522--524
+Overfull \hbox (56.48936pt too wide) in paragraph at lines 532--534
 [][] [] 
  []
 
 [7]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 7.30359pt on input line 545.
+(Font)              scaled to size 7.30359pt on input line 555.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 545.
+(Font)              scaled to size 5.76599pt on input line 555.
  [8] [9] [10] [11]
 File: ../figs/springplot2d3.jpg Graphic file (type bmp)
  <../figs/springplot2d3.jpg>
 File: ../figs/springplot2d4.jpg Graphic file (type bmp)
  <../figs/springplot2d4.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 736--738
+Overfull \hbox (56.48936pt too wide) in paragraph at lines 746--748
 [][] [] 
  []
 
-[12] [13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 794.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 794.
+[12]
+File: ../figs/ode.005.jpeg Graphic file (type bmp)
+ <../figs/ode.005.jpeg> [13]
+File: ../figs/rlc_circuitplot2d1.jpg Graphic file (type bmp)
+ <../figs/rlc_circuitplot2d1.jpg>
+File: ../figs/rlc_circuitplot2d2.jpg Graphic file (type bmp)
+
+<../figs/rlc_circuitplot2d2.jpg> [14]
+File: ../figs/rlc_circuitplot2d3.jpg Graphic file (type bmp)
+ <../figs/rlc_circuitplot2d3.jpg>
+File: ../figs/rlc_circuitplot2d4.jpg Graphic file (type bmp)
+
+<../figs/rlc_circuitplot2d4.jpg> [15] [16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 892.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 892.
  (./ode.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 794.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 794.
-Package rerunfilecheck Info: File `ode.out' has not changed.
-(rerunfilecheck)             Checksum: B76054E4D97585E342C3C570A75A774B;996.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 794.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 892.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 892.
+
+
+Package rerunfilecheck Warning: File `ode.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `ode.out':
+(rerunfilecheck)             Before: B76054E4D97585E342C3C570A75A774B;996
+(rerunfilecheck)             After:  ACA3EFE88D0DCF79703802E2590CAB47;1265.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 892.
  ) 
 Here is how much of TeX's memory you used:
- 17752 strings out of 493683
- 311442 string characters out of 6149653
+ 17774 strings out of 493683
+ 312041 string characters out of 6149653
  401143 words of memory out of 5000000
- 20933 multiletter control sequences out of 15000+600000
+ 20950 multiletter control sequences out of 15000+600000
  33212 words of font info for 108 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 65i,10n,77p,498b,489s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,10n,77p,498b,491s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ode.dvi (13 pages, 48048 bytes).
+Output written on ode.dvi (16 pages, 57852 bytes).

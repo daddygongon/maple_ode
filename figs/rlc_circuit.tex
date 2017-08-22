@@ -1,0 +1,167 @@
+%% Created by Maple 2015.2, Mac OS X
+%% Source Worksheet: rlc_circuit.mw
+%% Generated: Tue Aug 22 17:38:48 JST 2017
+\documentclass{article}
+\usepackage{maplestd2e}
+\def\emptyline{\vspace{12pt}}
+\begin{document}
+\pagestyle{empty}
+\DefineParaStyle{Maple Bullet Item}
+\DefineParaStyle{Maple Heading 1}
+\DefineParaStyle{Maple Warning}
+\DefineParaStyle{Maple Heading 4}
+\DefineParaStyle{Maple Heading 2}
+\DefineParaStyle{Maple Heading 3}
+\DefineParaStyle{Maple Dash Item}
+\DefineParaStyle{Maple Error}
+\DefineParaStyle{Maple Title}
+\DefineParaStyle{Maple Text Output}
+\DefineParaStyle{Maple Normal}
+\DefineCharStyle{Maple 2D Output}
+\DefineCharStyle{Maple 2D Input}
+\DefineCharStyle{Maple Maple Input}
+\DefineCharStyle{Maple 2D Math}
+\DefineCharStyle{Maple Hyperlink}
+\section{\textbf{RLC回路}}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{restart;
+Euler2 := proc (q_i, i_i)
+  local q_ip1, i_ip1;
+  global dt, RR, qc;
+  i_ip1 := i_i + (V - RR * i_i - qc * q_i) * dt;
+  q_ip1 := q_i + i_i * dt;
+  return q_ip1, i_ip1;
+end;
+}{}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{Euler2 := proc (q_i, i_i) local q_ip1, i_ip1; global dt, RR, qc; i_ip1 := i_i+(V-RR*i_i-qc*q_i)*dt; q_ip1 := q_i+i_i*dt; return q_ip1, i_ip1 end proc}{\[\displaystyle {\it Euler2}\, := \,\textbf{proc} (q_ii_i) \\
+\textbf{local} \,q_ip1,\,i_ip1; \\
+\textbf{global} \,dt,\,RR,\,qc; \\
+\mapleIndent{1} i_ip1\,:=\,i_i + (V-RR \ast i_i-qc \ast q_i) \ast dt;\\
+\mapleIndent{1} q_ip1\,:=\,q_i + i_i \ast dt;\\
+\mapleIndent{1} \textbf{return}\,q_ip1,\,i_ip1\\
+\textbf{end\ proc};\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{dt:=0.01;RR:=0.5;qc:=1;V:=1;
+ii:=[0];
+qq:=[0]; 
+for i from 2 to 2000 do
+  q, i2 := Euler2(qq[i-1],ii[i-1]);
+  qq :=[op(qq),q]; 
+  ii :=[op(ii),i2]; 
+end do:
+with(plots):
+listplot(qq);listplot(ii);
+}{}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{dt := 0.1e-1}{\[\displaystyle {\it dt}\, := \, 0.01\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{RR := .5}{\[\displaystyle {\it RR}\, := \, 0.5\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{qc := 1}{\[\displaystyle {\it qc}\, := \,1\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{V := 1}{\[\displaystyle V\, := \,1\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{ii := [0]}{\[\displaystyle {\it ii}\, := \,[0]\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{qq := [0]}{\[\displaystyle {\it qq}\, := \,[0]\]}
+\end{maplelatex}
+\mapleresult
+\mapleplot{rlc_circuitplot2d1.eps}
+\mapleresult
+\mapleplot{rlc_circuitplot2d2.eps}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{dt:=0.01;RR:=0.5;qc:=1;V:=0;
+ii:=[0];
+qq:=[1]; 
+for i from 2 to 2000 do
+  q, i2 := Euler2(qq[i-1],ii[i-1]);
+  qq :=[op(qq),q]; 
+  ii :=[op(ii),i2]; 
+end do:
+with(plots):
+listplot(qq);listplot(ii);}{}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{dt := 0.1e-1}{\[\displaystyle {\it dt}\, := \, 0.01\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{RR := .5}{\[\displaystyle {\it RR}\, := \, 0.5\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{qc := 1}{\[\displaystyle {\it qc}\, := \,1\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{V := 0}{\[\displaystyle V\, := \,0\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{ii := [0]}{\[\displaystyle {\it ii}\, := \,[0]\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{qq := [1]}{\[\displaystyle {\it qq}\, := \,[1]\]}
+\end{maplelatex}
+\mapleresult
+\mapleplot{rlc_circuitplot2d3.eps}
+\mapleresult
+\mapleplot{rlc_circuitplot2d4.eps}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{L:=1;C:=1;
+T1:=evalf(4*Pi*L/sqrt(4*L/C-RR\symbol{94}2));
+}{}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{L := 1}{\[\displaystyle L\, := \,1\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{C := 1}{\[\displaystyle C\, := \,1\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{T1 := 6.489245884}{\[\displaystyle {\it T1}\, := \, 6.489245884\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{T2:=evalf(2*L/RR);}{}
+\end{mapleinput}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{T2 := 4.000000000}{\[\displaystyle {\it T2}\, := \, 4.0\]}
+\end{maplelatex}
+\end{maplegroup}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{}{}
+\end{mapleinput}
+\end{maplegroup}
+\end{document}
