@@ -282,29 +282,43 @@
     
     \section{Table of Contents}\label{table-of-contents}
 
-{1~~}Euler法による落下運動
+{1~~}Euler法，Runge-Kutta法による微分方程式解法
 
-{1.1~~}重力場中の運動
+{2~~}Euler法による落下運動
 
-{1.2~~}Euler法
+{2.1~~}重力場中の運動
 
-{1.3~~}重力場中の運動をEuler法で解いたら
+{2.2~~}Euler法
 
-{1.4~~}空気抵抗がある水滴の落下
+{2.3~~}重力場中の運動をEuler法で解いたら
 
-{2~~}高精度計算
+{2.4~~}空気抵抗がある水滴の落下
 
-{2.1~~}バネの運動
+{3~~}高精度計算
 
-{2.2~~}2次のRunge-Kuttaの導出
+{3.1~~}バネの運動
 
-{2.3~~}Runge-Kutta2次公式
+{3.2~~}2次のRunge-Kuttaの導出
 
-{2.4~~}Runge-Kutta4次公式
+{3.3~~}Runge-Kutta2次公式
 
-{2.5~~}連立方程式にRunge-Kutta4次公式を
+{3.4~~}Runge-Kutta4次公式
 
-{3~~}電気回路の応答
+{3.5~~}連立方程式にRunge-Kutta4次公式を
+
+{4~~}電気回路の応答
+
+    \section{Euler法，Runge-Kutta法による微分方程式解法}\label{eulerux6cd5runge-kuttaux6cd5ux306bux3088ux308bux5faeux5206ux65b9ux7a0bux5f0fux89e3ux6cd5}
+
+\begin{itemize}
+\tightlist
+\item
+  /Users/bob/Desktop/maple\_ode/ode.ipynb
+\item
+  origin git@github.com:daddygongon/maple\_ode.git (fetch)
+\item
+  cc 2017 by Shigeto R. Nishitani
+\end{itemize}
 
     \section{Euler法による落下運動}\label{eulerux6cd5ux306bux3088ux308bux843dux4e0bux904bux52d5}
 
@@ -323,6 +337,12 @@ a &= \frac{d^2 x}{dt^2}
 \[ 
 -mg = m \frac{d^2 x}{dt^2}
 \] となります．
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{../figs/ode.002.jpeg}
+\caption{simple\_gravitation\_fall}
+\end{figure}
 
     \subsection{Euler法}\label{eulerux6cd5}
 
@@ -418,6 +438,12 @@ m \frac{dv_x}{dt} = - C v_x - mg
 \]
 となります．これにともなったv\_xの時間変化に対して，今までは単純に重力加速していたのが，v\_xに比例する空気抵抗を記述する項が付与されます．この変化をEuler2に入れ込むと少しの修正ですが，結果は劇的に変化します．
 
+\begin{figure}[htbp]
+\centering
+\includegraphics{../figs/ode.003.jpeg}
+\caption{gravitation\_fall\_with\_air\_resistance}
+\end{figure}
+
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{n+no}{Euler2} \PY{p}{:}\PY{o}{=} \PY{n+nb}{proc} \PY{p}{(}\PY{n}{x\PYZus{}i}\PY{p}{,} \PY{n}{v\PYZus{}i}\PY{p}{)}
           \PY{n}{local} \PY{n}{v\PYZus{}ip1}\PY{p}{,} \PY{n}{x\PYZus{}ip1}\PY{p}{;}
@@ -463,22 +489,28 @@ x_{i+1} & = x_i + v_i\, dt
 \]
 なる連立方程式を解くことに置き換わります．これをMapleで関数にして，さらに計算結果を表示させてみます．
 
+\begin{figure}[htbp]
+\centering
+\includegraphics{../figs/ode.004.jpeg}
+\caption{free\_oscillation\_mass\_sprint\_system}
+\end{figure}
+
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n+no}{Euler3} \PY{p}{:}\PY{o}{=} \PY{n+nb}{proc} \PY{p}{(}\PY{n}{x\PYZus{}i}\PY{p}{,} \PY{n}{v\PYZus{}i}\PY{p}{)}
-          \PY{n}{local} \PY{n}{v\PYZus{}ip1}\PY{p}{,} \PY{n}{x\PYZus{}ip1}\PY{p}{;}
+{\color{incolor}In [{\color{incolor} }]:} \PY{n+no}{Euler3} \PY{p}{:}\PY{o}{=} \PY{n+nb}{proc} \PY{p}{(}\PY{n}{x\PYZus{}0}\PY{p}{,} \PY{n}{v\PYZus{}0}\PY{p}{)}
+          \PY{n}{local} \PY{n}{v\PYZus{}1}\PY{p}{,} \PY{n}{x\PYZus{}1}\PY{p}{;}
           \PY{n}{global} \PY{n}{k}\PY{p}{,} \PY{n}{cc}\PY{p}{,} \PY{n}{dx}\PY{p}{;}
-          \PY{n}{v\PYZus{}ip1} \PY{p}{:}\PY{o}{=} \PY{n}{v\PYZus{}i} \PY{o}{+} \PY{p}{(}\PY{o}{\PYZhy{}} \PY{n}{k} \PY{o}{*} \PY{n}{x\PYZus{}i}\PY{p}{)} \PY{o}{*} \PY{n}{dt}\PY{p}{;}
-          \PY{n}{x\PYZus{}ip1} \PY{p}{:}\PY{o}{=} \PY{n}{x\PYZus{}i} \PY{o}{+} \PY{n}{v\PYZus{}i} \PY{o}{*} \PY{n}{dt}\PY{p}{;}
-          \PY{k}{return} \PY{n}{x\PYZus{}ip1}\PY{p}{,} \PY{n}{v\PYZus{}ip1}\PY{p}{;}
+          \PY{n}{v\PYZus{}1} \PY{p}{:}\PY{o}{=} \PY{n}{v\PYZus{}0} \PY{o}{+} \PY{p}{(}\PY{o}{\PYZhy{}} \PY{n}{k} \PY{o}{*} \PY{n}{x\PYZus{}0}\PY{p}{)} \PY{o}{*} \PY{n}{dt}\PY{p}{;}
+          \PY{n}{x\PYZus{}1} \PY{p}{:}\PY{o}{=} \PY{n}{x\PYZus{}0} \PY{o}{+} \PY{n}{v\PYZus{}0} \PY{o}{*} \PY{n}{dt}\PY{p}{;}
+          \PY{k}{return} \PY{n}{x\PYZus{}1}\PY{p}{,} \PY{n}{v\PYZus{}1}\PY{p}{;}
         \PY{k}{end}\PY{p}{;}
         
         \PY{l+s+ss}{dt}\PY{p}{:}\PY{o}{=}\PY{l+m+mi}{0}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{;}\PY{l+s+ss}{k}\PY{p}{:}\PY{o}{=}\PY{l+m+mi}{0}\PY{o}{.}\PY{l+m+mo}{01}\PY{p}{;}
         \PY{l+s+ss}{vv}\PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{l+m+mi}{0}\PY{o}{.}\PY{l+m+mo}{01}\PY{o}{]}\PY{p}{;}
         \PY{l+s+ss}{xx}\PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{l+m+mi}{0}\PY{o}{]}\PY{p}{;} 
         \PY{k}{for} \PY{n}{i} \PY{n}{from} \PY{l+m+mi}{2} \PY{n}{to} \PY{l+m+mi}{4000} \PY{k}{do}
-          \PY{n}{x}\PY{p}{,} \PY{n}{y} \PY{p}{:}\PY{o}{=} \PY{n+no}{Euler3}\PY{p}{(}\PY{n}{xx}\PY{o}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{]}\PY{p}{,}\PY{n}{vv}\PY{o}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{]}\PY{p}{)}\PY{p}{;}
+          \PY{n}{x}\PY{p}{,} \PY{n}{v} \PY{p}{:}\PY{o}{=} \PY{n+no}{Euler3}\PY{p}{(}\PY{n}{xx}\PY{o}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{]}\PY{p}{,}\PY{n}{vv}\PY{o}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{]}\PY{p}{)}\PY{p}{;}
           \PY{n}{xx} \PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{n}{op}\PY{p}{(}\PY{n}{xx}\PY{p}{)}\PY{p}{,}\PY{n}{x}\PY{o}{]}\PY{p}{;} 
-          \PY{n}{vv} \PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{n}{op}\PY{p}{(}\PY{n}{vv}\PY{p}{)}\PY{p}{,}\PY{n}{y}\PY{o}{]}\PY{p}{;} 
+          \PY{n}{vv} \PY{p}{:}\PY{o}{=}\PY{o}{[}\PY{n}{op}\PY{p}{(}\PY{n}{vv}\PY{p}{)}\PY{p}{,}\PY{n}{v}\PY{o}{]}\PY{p}{;} 
         \PY{k}{end} \PY{k}{do}\PY{p}{:}
         \PY{n}{with}\PY{p}{(}\PY{n}{plots}\PY{p}{)}\PY{p}{:}
         \PY{n}{listplot}\PY{p}{(}\PY{n}{xx}\PY{p}{)}\PY{p}{;}\PY{n}{listplot}\PY{p}{(}\PY{n}{vv}\PY{p}{)}\PY{p}{;}
@@ -494,7 +526,7 @@ x_{i+1} & = x_i + v_i\, dt
 
     \subsection{2次のRunge-Kuttaの導出}\label{ux6b21ux306erunge-kuttaux306eux5c0eux51fa}
 
-一般にRunge-Kutta法と呼ばれる手法は，4次の古典的Runge-Kutta法を指します．導出は意外と面倒なので，2次の場合のさわりを紹介して，そこからの類推としましょう．
+一般にRunge-Kutta法と呼ばれる手法は，4次の古典的Runge-Kutta法を指します．導出は意外と面倒なので，2次の場合のさわりを紹介して，そこからの類推としましょう．\(x,v,t\)などのパラメータ名を変更しますのでご注意あれ．
 
 (「ANSI Cによる数値計算法」堀之内聰一，酒井幸吉，榎園茂，森北2002,
 p.133) テイラー展開により，\(h^2\)の精度まで展開する． \[
@@ -510,8 +542,8 @@ y(x_0+h) = y(x_0) +y_0'h+\frac{1}{2!}y_0''h^2 + O(h^3)
 \(y'(x_0 +\theta h)\)の近似値として，\(\theta=0, \theta=1\)の場合を考えると，
 \[
 \begin{aligned}
-\theta&=0のとき，& \Delta y &\simeq hy'(x_0) \\
-\theta&=1のとき，& \Delta y &\simeq hy'(x_0+h) 
+\Delta y &\simeq hy'(x_0) \, &{\textrm where}\, &\theta=0\\
+\Delta y &\simeq hy'(x_0+h)  \, &{\textrm where}\, &\theta=1
 \end{aligned}
 \]
 これらの値は単独では\(\Delta y\)に対して\(h^2\)の精度をもつ近似値にならないが，これらの一次結合\(\alpha h y'(x_0)+\beta hy'(x_0+h)\)を\(\alpha, \beta\)をうまく定めることによって，\(\Delta y\)の\(h^2\)の精度をもつ近似値にすることができる．実際，
@@ -559,7 +591,7 @@ k = \frac{1}{2}(k_1+k_2), y_1 = y_0 +k
 こうして得られたRunge-Kuttaの２次の公式を定義すると次の通りです．
 
 微分方程式 \[
-\frac{dy}{dx} = f(x,y), 初期条件y(x_0)=y_0
+\frac{dy}{dx} = f(x,y), \, where \, y(x_0)=y_0
 \]
 
 の数値解は，刻み幅を\(h\)，\(x_n=x_0+nh\)として，次の漸化式 \[
@@ -577,7 +609,7 @@ k & = \frac{1}{2}(k_1+k_2)
 2次と同様の考え方で，\(h^4\)の精度を持つRunge-Kutta４次公式を作ることができる．
 
 微分方程式 \[
-\frac{dy}{dx} = f(x,y), 初期条件y(x_0)=y_0
+\frac{dy}{dx} = f(x,y), \, {\textrm where}y(x_0)=y_0
 \]
 
 の数値解は，刻み幅を\(h\)，\(x_n=x_0+nh\)として，次の漸化式 \[
@@ -596,8 +628,8 @@ k & = \frac{1}{6}(k_1+2k_2+2k_3+k_4)
 
 連立微分方程式 \[
 \begin{aligned}
-\frac{dy}{dx} &= f(x,y,z), &\, 初期条件y(x_0)=y_0 \\
-\frac{dz}{dx} &= g(x,y,z), &\, 初期条件z(x_0)=z_0 \\
+\frac{dy}{dx} &= f(x,y,z), &\, \, where \, y(x_0)=y_0 \\
+\frac{dz}{dx} &= g(x,y,z), &\, \, where \, z(x_0)=z_0 \\
 \end{aligned}
 \]
 
@@ -626,14 +658,14 @@ k &= \frac{1}{6}(k_1+2k_2+2k_3+k_4), \,
           \PY{n}{local} \PY{n}{k1}\PY{p}{,}\PY{n}{l1}\PY{p}{,}\PY{n}{k2}\PY{p}{,}\PY{n}{l2}\PY{p}{,}\PY{n}{k3}\PY{p}{,}\PY{n}{l3}\PY{p}{,}\PY{n}{k4}\PY{p}{,}\PY{n}{l4}\PY{p}{,}\PY{n}{kk}\PY{p}{,}\PY{n}{ll}\PY{p}{;}
           \PY{l+s+ss}{k1}\PY{p}{:}\PY{o}{=} \PY{n}{h} \PY{o}{*} \PY{n}{ff}\PY{p}{(}\PY{n}{x\PYZus{}i}\PY{p}{,} \PY{n}{y\PYZus{}i}\PY{p}{,} \PY{n}{z\PYZus{}i}\PY{p}{)}\PY{p}{;}
           \PY{l+s+ss}{l1}\PY{p}{:}\PY{o}{=} \PY{n}{h} \PY{o}{*} \PY{n}{gg}\PY{p}{(}\PY{n}{x\PYZus{}i}\PY{p}{,} \PY{n}{y\PYZus{}i}\PY{p}{,} \PY{n}{z\PYZus{}i}\PY{p}{)}\PY{p}{;}
-          \PY{l+s+ss}{k2}\PY{p}{:}\PY{o}{=} \PY{n}{h}\PY{o}{*}\PY{n}{ff}\PY{p}{(}\PY{n}{x\PYZus{}i}\PY{o}{+}\PY{n}{h}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{y\PYZus{}i}\PY{o}{+}\PY{n}{k1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{z\PYZus{}i}\PY{o}{+}\PY{n}{l1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{;}
-          \PY{l+s+ss}{l2}\PY{p}{:}\PY{o}{=} \PY{n}{h}\PY{o}{*}\PY{n}{gg}\PY{p}{(}\PY{n}{x\PYZus{}i}\PY{o}{+}\PY{n}{h}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{y\PYZus{}i}\PY{o}{+}\PY{n}{k1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{z\PYZus{}i}\PY{o}{+}\PY{n}{l1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{;}
-          \PY{l+s+ss}{k3}\PY{p}{:}\PY{o}{=} \PY{n}{h}\PY{o}{*}\PY{n}{ff}\PY{p}{(}\PY{n}{x\PYZus{}i}\PY{o}{+}\PY{n}{h}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{y\PYZus{}i}\PY{o}{+}\PY{n}{k2}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{z\PYZus{}i}\PY{o}{+}\PY{n}{l2}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{;}
-          \PY{l+s+ss}{l3}\PY{p}{:}\PY{o}{=} \PY{n}{h}\PY{o}{*}\PY{n}{gg}\PY{p}{(}\PY{n}{x\PYZus{}i}\PY{o}{+}\PY{n}{h}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{y\PYZus{}i}\PY{o}{+}\PY{n}{k2}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{z\PYZus{}i}\PY{o}{+}\PY{n}{l2}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{;}
-          \PY{l+s+ss}{k4}\PY{p}{:}\PY{o}{=} \PY{n}{h}\PY{o}{*}\PY{n}{ff}\PY{p}{(}\PY{n}{x\PYZus{}i}\PY{o}{+}\PY{n}{h}\PY{p}{,} \PY{n}{y\PYZus{}i}\PY{o}{+}\PY{n}{k3}\PY{p}{,} \PY{n}{z\PYZus{}i}\PY{o}{+}\PY{n}{l3}\PY{p}{)}\PY{p}{;}
-          \PY{l+s+ss}{l4}\PY{p}{:}\PY{o}{=} \PY{n}{h}\PY{o}{*}\PY{n}{gg}\PY{p}{(}\PY{n}{x\PYZus{}i}\PY{o}{+}\PY{n}{h}\PY{p}{,} \PY{n}{y\PYZus{}i}\PY{o}{+}\PY{n}{k3}\PY{p}{,} \PY{n}{z\PYZus{}i}\PY{o}{+}\PY{n}{l3}\PY{p}{)}\PY{p}{;}
-          \PY{n}{kk} \PY{p}{:}\PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{6}\PY{o}{*}\PY{p}{(}\PY{n}{k1}\PY{o}{+}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{k2}\PY{o}{+}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{k3}\PY{o}{+}\PY{n}{k4}\PY{p}{)}\PY{p}{;}
-          \PY{n}{ll} \PY{p}{:}\PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{6}\PY{o}{*}\PY{p}{(}\PY{n}{l1}\PY{o}{+}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{l2}\PY{o}{+}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{l3}\PY{o}{+}\PY{n}{l4}\PY{p}{)}\PY{p}{;}
+          \PY{l+s+ss}{k2}\PY{p}{:}\PY{o}{=} \PY{n}{h} \PY{o}{*} \PY{n}{ff}\PY{p}{(}\PY{n}{x\PYZus{}i} \PY{o}{+} \PY{n}{h}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{y\PYZus{}i} \PY{o}{+} \PY{n}{k1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{z\PYZus{}i} \PY{o}{+} \PY{n}{l1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{;}
+          \PY{l+s+ss}{l2}\PY{p}{:}\PY{o}{=} \PY{n}{h} \PY{o}{*} \PY{n}{gg}\PY{p}{(}\PY{n}{x\PYZus{}i} \PY{o}{+} \PY{n}{h}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{y\PYZus{}i} \PY{o}{+} \PY{n}{k1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{z\PYZus{}i} \PY{o}{+} \PY{n}{l1}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{;}
+          \PY{l+s+ss}{k3}\PY{p}{:}\PY{o}{=} \PY{n}{h} \PY{o}{*} \PY{n}{ff}\PY{p}{(}\PY{n}{x\PYZus{}i} \PY{o}{+} \PY{n}{h}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{y\PYZus{}i} \PY{o}{+} \PY{n}{k2}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{z\PYZus{}i} \PY{o}{+} \PY{n}{l2}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{;}
+          \PY{l+s+ss}{l3}\PY{p}{:}\PY{o}{=} \PY{n}{h} \PY{o}{*} \PY{n}{gg}\PY{p}{(}\PY{n}{x\PYZus{}i} \PY{o}{+} \PY{n}{h}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{y\PYZus{}i} \PY{o}{+} \PY{n}{k2}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{z\PYZus{}i} \PY{o}{+} \PY{n}{l2}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{;}
+          \PY{l+s+ss}{k4}\PY{p}{:}\PY{o}{=} \PY{n}{h} \PY{o}{*} \PY{n}{ff}\PY{p}{(}\PY{n}{x\PYZus{}i} \PY{o}{+} \PY{n}{h}\PY{p}{,}   \PY{n}{y\PYZus{}i} \PY{o}{+} \PY{n}{k3}\PY{p}{,}   \PY{n}{z\PYZus{}i} \PY{o}{+} \PY{n}{l3}\PY{p}{)}\PY{p}{;}
+          \PY{l+s+ss}{l4}\PY{p}{:}\PY{o}{=} \PY{n}{h} \PY{o}{*} \PY{n}{gg}\PY{p}{(}\PY{n}{x\PYZus{}i} \PY{o}{+} \PY{n}{h}\PY{p}{,}   \PY{n}{y\PYZus{}i} \PY{o}{+} \PY{n}{k3}\PY{p}{,}   \PY{n}{z\PYZus{}i} \PY{o}{+} \PY{n}{l3}\PY{p}{)}\PY{p}{;}
+          \PY{n}{kk} \PY{p}{:}\PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{6}\PY{o}{*}\PY{p}{(}\PY{n}{k1} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{k2} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{k3} \PY{o}{+} \PY{n}{k4}\PY{p}{)}\PY{p}{;}
+          \PY{n}{ll} \PY{p}{:}\PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mi}{6}\PY{o}{*}\PY{p}{(}\PY{n}{l1} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{l2} \PY{o}{+} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{l3} \PY{o}{+} \PY{n}{l4}\PY{p}{)}\PY{p}{;}
           \PY{k}{return} \PY{n}{kk}\PY{p}{,}\PY{n}{ll}\PY{p}{;}
         \PY{k}{end}\PY{p}{:}
 \end{Verbatim}
@@ -650,8 +682,8 @@ x_{i+1} & = x_i + v_i\, dt
 
 とRunge-Kutta4次公式を示した連立微分方程式 \[
 \begin{aligned}
-\frac{dy}{dx} &= f(x,y,z), 初期条件y(x_0)=y_0 \\
-\frac{dz}{dx} &= g(x,y,z), 初期条件z(x_0)=z_0 \\
+\frac{dy}{dx} &= f(x,y,z), \, where \, y(x_0)=y_0 \\
+\frac{dz}{dx} &= g(x,y,z), \, where \, z(x_0)=z_0 \\
 \end{aligned}
 \] とを比べて，変数の表記の違いと関数\(f,g\)を具体的に書き下します．
 
@@ -673,13 +705,14 @@ g(x,y,z) & g(t,x,v) = -k x\tabularnewline
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{n}{ff} \PY{p}{:}\PY{o}{=} \PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{x}\PY{p}{,}\PY{n}{v}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{n}{v}\PY{p}{;}
         \PY{n}{gg} \PY{p}{:}\PY{o}{=} \PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{x}\PY{p}{,}\PY{n}{v}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{o}{\PYZgt{}} \PY{o}{\PYZhy{}}\PY{n}{k}\PY{o}{*}\PY{n}{x}\PY{p}{;}
-        \PY{n+no}{Euler3} \PY{p}{:}\PY{o}{=} \PY{n+nb}{proc} \PY{p}{(}\PY{n}{x\PYZus{}i}\PY{p}{,} \PY{n}{v\PYZus{}i}\PY{p}{)}
-          \PY{n}{local} \PY{n}{v\PYZus{}ip1}\PY{p}{,} \PY{n}{x\PYZus{}ip1}\PY{p}{,} \PY{n}{kk}\PY{p}{,} \PY{n}{ll}\PY{p}{;}
+        
+        \PY{n+no}{Euler3} \PY{p}{:}\PY{o}{=} \PY{n+nb}{proc} \PY{p}{(}\PY{n}{x\PYZus{}0}\PY{p}{,} \PY{n}{v\PYZus{}0}\PY{p}{)}
+          \PY{n}{local} \PY{n}{v\PYZus{}1}\PY{p}{,} \PY{n}{x\PYZus{}1}\PY{p}{,} \PY{n}{kk}\PY{p}{,} \PY{n}{ll}\PY{p}{;}
           \PY{n}{global} \PY{n}{dt}\PY{p}{;}
-          \PY{n}{kk}\PY{p}{,}\PY{n}{ll} \PY{p}{:}\PY{o}{=} \PY{n+no}{RungeKutta4}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{x\PYZus{}i}\PY{p}{,}\PY{n}{v\PYZus{}i}\PY{p}{,}\PY{n}{dt}\PY{p}{)}\PY{p}{;}
-          \PY{l+s+ss}{x\PYZus{}ip1}\PY{p}{:}\PY{o}{=} \PY{n}{x\PYZus{}i}\PY{o}{+}\PY{n}{kk}\PY{p}{;}
-          \PY{l+s+ss}{v\PYZus{}ip1}\PY{p}{:}\PY{o}{=} \PY{n}{v\PYZus{}i}\PY{o}{+}\PY{n}{ll}\PY{p}{;}
-          \PY{k}{return} \PY{n}{x\PYZus{}ip1}\PY{p}{,} \PY{n}{v\PYZus{}ip1}\PY{p}{;}
+          \PY{n}{kk}\PY{p}{,}\PY{n}{ll} \PY{p}{:}\PY{o}{=} \PY{n+no}{RungeKutta4}\PY{p}{(}\PY{n}{t}\PY{p}{,} \PY{n}{x\PYZus{}0}\PY{p}{,} \PY{n}{v\PYZus{}0}\PY{p}{,} \PY{n}{dt}\PY{p}{)}\PY{p}{;}
+          \PY{l+s+ss}{x\PYZus{}1}\PY{p}{:}\PY{o}{=} \PY{n}{x\PYZus{}0} \PY{o}{+} \PY{n}{kk}\PY{p}{;}
+          \PY{l+s+ss}{v\PYZus{}1}\PY{p}{:}\PY{o}{=} \PY{n}{v\PYZus{}0} \PY{o}{+} \PY{n}{ll}\PY{p}{;}
+          \PY{k}{return} \PY{n}{x\PYZus{}1}\PY{p}{,} \PY{n}{v\PYZus{}1}\PY{p}{;}
         \PY{k}{end}\PY{p}{;}
 \end{Verbatim}
 
