@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  22 AUG 2017 17:47
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  26 AUG 2017 09:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1053,7 +1053,7 @@ File: ../figs/Euler_ball_dropplot2d1.jpg Graphic file (type bmp)
 <../figs/Euler_ball_dropplot2d1.jpg>
 File: ../figs/Euler_ball_dropplot2d2.jpg Graphic file (type bmp)
  <../figs/Euler_ball_dropplot2d2.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 431--433
+Overfull \hbox (56.48936pt too wide) in paragraph at lines 429--431
 [][] [] 
  []
 
@@ -1065,7 +1065,7 @@ File: ../figs/Euler_ball_dropplot2d4.jpg Graphic file (type bmp)
 File: ../figs/Euler_ball_dropplot2d3.jpg Graphic file (type bmp)
 
 <../figs/Euler_ball_dropplot2d3.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 470--472
+Overfull \hbox (56.48936pt too wide) in paragraph at lines 467--469
 [][] [] 
  []
 
@@ -1077,21 +1077,21 @@ File: ../figs/springplot2d1.jpg Graphic file (type bmp)
 File: ../figs/springplot2d2.jpg Graphic file (type bmp)
 
 <../figs/springplot2d2.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 532--534
+Overfull \hbox (56.48936pt too wide) in paragraph at lines 528--530
 [][] [] 
  []
 
 [7]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 7.30359pt on input line 555.
+(Font)              scaled to size 7.30359pt on input line 551.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 555.
+(Font)              scaled to size 5.76599pt on input line 551.
  [8] [9] [10] [11]
 File: ../figs/springplot2d3.jpg Graphic file (type bmp)
  <../figs/springplot2d3.jpg>
 File: ../figs/springplot2d4.jpg Graphic file (type bmp)
  <../figs/springplot2d4.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 746--748
+Overfull \hbox (56.48936pt too wide) in paragraph at lines 739--741
 [][] [] 
  []
 
@@ -1108,32 +1108,22 @@ File: ../figs/rlc_circuitplot2d3.jpg Graphic file (type bmp)
 File: ../figs/rlc_circuitplot2d4.jpg Graphic file (type bmp)
 
 <../figs/rlc_circuitplot2d4.jpg> [15] [16]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 892.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 892.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 882.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 882.
  (./ode.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 892.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 892.
-
-
-Package rerunfilecheck Warning: File `ode.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ode.out':
-(rerunfilecheck)             Before: B76054E4D97585E342C3C570A75A774B;996
-(rerunfilecheck)             After:  ACA3EFE88D0DCF79703802E2590CAB47;1265.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 892.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 882.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 882.
+Package rerunfilecheck Info: File `ode.out' has not changed.
+(rerunfilecheck)             Checksum: ACA3EFE88D0DCF79703802E2590CAB47;1265.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 882.
  ) 
 Here is how much of TeX's memory you used:
  17774 strings out of 493683
- 312041 string characters out of 6149653
+ 312008 string characters out of 6149653
  401143 words of memory out of 5000000
  20950 multiletter control sequences out of 15000+600000
  33212 words of font info for 108 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  65i,10n,77p,498b,491s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ode.dvi (16 pages, 57852 bytes).
+Output written on ode.dvi (16 pages, 58160 bytes).
