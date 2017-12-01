@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  30 NOV 2017 13:09
+This is e-pTeX, Version 3.14159265-p3.7-160201-2.6 (utf8.euc) (TeX Live 2016) (preloaded format=platex 2017.1.26)  1 DEC 2017 14:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -822,8 +822,7 @@ Package: ulem 2012/05/18
 )
 Package hyperref Info: Option `breaklinks' set `true' on input line 268.
 Package hyperref Info: Option `colorlinks' set `true' on input line 268.
-
-No file maple_ode.aux.
+ (./maple_ode.aux)
 \openout1 = `maple_ode.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 275.
@@ -845,7 +844,7 @@ LaTeX Font Info:    ... okay on input line 275.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 275.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 275.
 
-(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 275.
@@ -919,12 +918,10 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 275.
 LaTeX Info: Redefining \pageref on input line 275.
 LaTeX Info: Redefining \nameref on input line 275.
+
+(./maple_ode.out) (./maple_ode.out)
 \@outlinefile=\write5
 \openout5 = `maple_ode.out'.
-
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
 
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 16.60605pt on input line 279.
@@ -935,6 +932,7 @@ LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 279.
 LaTeX Font Info:    Try loading font information for OT1+ppl on input line 279.
+
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
@@ -1003,141 +1001,98 @@ LaTeX Font Info:    Try loading font information for TS1+ppl on input line 326.
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 335.
+(Font)              scaled to size 11.53198pt on input line 337.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 335.
+(Font)              scaled to size 11.53198pt on input line 337.
  [1
 
 ]
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 7.30359pt on input line 339.
+(Font)              scaled to size 7.30359pt on input line 341.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 5.76599pt on input line 339.
+(Font)              scaled to size 5.76599pt on input line 341.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 339.
+(Font)              scaled to size 10.42007pt on input line 341.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 339.
+(Font)              scaled to size 7.91925pt on input line 341.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 339.
+(Font)              scaled to size 6.25204pt on input line 341.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 339.
+(Font)              scaled to size 10.42007pt on input line 341.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 339.
+(Font)              scaled to size 7.91925pt on input line 341.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 339.
+(Font)              scaled to size 6.25204pt on input line 341.
 File: ../figs/ode.002.jpeg Graphic file (type bmp)
 
 <../figs/ode.002.jpeg> [2]
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 398.
+(Font)              scaled to size 9.60999pt on input line 400.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 398.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 398.
+(Font)              scaled to size 9.60999pt on input line 400.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 400.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 404.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 406.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 404.
+(Font)              scaled to size 9.60999pt on input line 406.
 LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 404.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 406.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 404.
+(Font)              scaled to size 9.60999pt on input line 406.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 404.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 406.
  [3]
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 424
+.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ts1cmtt.fd
+File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
 File: ../figs/Euler_ball_dropplot2d1.jpg Graphic file (type bmp)
 
-<../figs/Euler_ball_dropplot2d1.jpg>
-File: ../figs/Euler_ball_dropplot2d2.jpg Graphic file (type bmp)
- <../figs/Euler_ball_dropplot2d2.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 429--431
-[][] [] 
- []
-
-[4]
+<../figs/Euler_ball_dropplot2d1.jpg> [4]
 File: ../figs/ode.003.jpeg Graphic file (type bmp)
- <../figs/ode.003.jpeg>
+ <../figs/ode.003.jpeg> [5]
+File: ../figs/Euler_ball_dropplot2d2.jpg Graphic file (type bmp)
+
+<../figs/Euler_ball_dropplot2d2.jpg> [6]
+File: ../figs/ode.004.jpeg Graphic file (type bmp)
+ <../figs/ode.004.jpeg> [7]
 File: ../figs/Euler_ball_dropplot2d3.jpg Graphic file (type bmp)
- <../figs/Euler_ball_dropplot2d3.jpg>
+
+<../figs/Euler_ball_dropplot2d3.jpg> [8] [9] [10] [11] [12]
 File: ../figs/Euler_ball_dropplot2d4.jpg Graphic file (type bmp)
 
-<../figs/Euler_ball_dropplot2d4.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 467--469
-[][] [] 
- []
-
-[5]
-File: ../figs/ode.004.jpeg Graphic file (type bmp)
- <../figs/ode.004.jpeg> [6]
-File: ../figs/springplot2d1.jpg Graphic file (type bmp)
- <../figs/springplot2d1.jpg>
-File: ../figs/springplot2d2.jpg Graphic file (type bmp)
-
-<../figs/springplot2d2.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 528--530
-[][] [] 
- []
-
-[7] [8] [9] [10]
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table 1 on input line 706.
-
-[11]
-File: ../figs/springplot2d3.jpg Graphic file (type bmp)
- <../figs/springplot2d3.jpg>
-File: ../figs/springplot2d4.jpg Graphic file (type bmp)
- <../figs/springplot2d4.jpg>
-Overfull \hbox (56.48936pt too wide) in paragraph at lines 739--741
-[][] [] 
- []
-
-[12]
+<../figs/Euler_ball_dropplot2d4.jpg> [13]
 File: ../figs/ode.005.jpeg Graphic file (type bmp)
- <../figs/ode.005.jpeg> [13]
-File: ../figs/rlc_circuitplot2d1.jpg Graphic file (type bmp)
- <../figs/rlc_circuitplot2d1.jpg>
-File: ../figs/rlc_circuitplot2d2.jpg Graphic file (type bmp)
+ <../figs/ode.005.jpeg> [14]
+File: ../figs/Euler_ball_dropplot2d5.jpg Graphic file (type bmp)
 
-<../figs/rlc_circuitplot2d2.jpg> [14]
-File: ../figs/rlc_circuitplot2d3.jpg Graphic file (type bmp)
- <../figs/rlc_circuitplot2d3.jpg>
-File: ../figs/rlc_circuitplot2d4.jpg Graphic file (type bmp)
-
-<../figs/rlc_circuitplot2d4.jpg> [15] [16]
-
-Package longtable Warning: Table widths have changed. Rerun LaTeX.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 884.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 884.
-(./maple_ode.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 884.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 884.
-
-
-Package rerunfilecheck Warning: File `maple_ode.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `maple_ode.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  ACA3EFE88D0DCF79703802E2590CAB47;1265.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 884.
+<../figs/Euler_ball_dropplot2d5.jpg> [15]
+File: ../figs/Euler_ball_dropplot2d6.jpg Graphic file (type bmp)
+ <../figs/Euler_ball_dropplot2d6.jpg>
+[16] [17]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 912.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 912.
+ (./maple_ode.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 912.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 912.
+Package rerunfilecheck Info: File `maple_ode.out' has not changed.
+(rerunfilecheck)             Checksum: ACA3EFE88D0DCF79703802E2590CAB47;1265.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 912.
  ) 
 Here is how much of TeX's memory you used:
- 17760 strings out of 493683
- 311915 string characters out of 6149653
- 397007 words of memory out of 5000000
- 20942 multiletter control sequences out of 15000+600000
- 30972 words of font info for 104 fonts, out of 8000000 for 9000
+ 17766 strings out of 493683
+ 312010 string characters out of 6149653
+ 401155 words of memory out of 5000000
+ 20944 multiletter control sequences out of 15000+600000
+ 31269 words of font info for 105 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 65i,7n,77p,504b,489s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,7n,77p,504b,491s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on maple_ode.dvi (16 pages, 56804 bytes).
+Output written on maple_ode.dvi (17 pages, 66264 bytes).

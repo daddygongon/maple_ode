@@ -1,6 +1,6 @@
 %% Created by Maple 18.02, Mac OS X
 %% Source Worksheet: Euler_ball_drop.mw
-%% Generated: Sat Aug 19 19:21:13 JST 2017
+%% Generated: Fri Dec 01 13:57:32 JST 2017
 \documentclass{article}
 \usepackage{maplestd2e}
 \def\emptyline{\vspace{12pt}}
@@ -26,41 +26,32 @@
 \section{\textbf{Euler\_ball\_drop}}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{Euler := proc (x_i, v_i)
-  local v_ip1, x_ip1;
+\mapleinline{active}{1d}{Euler := proc (x0, v0)
+  local v1, x1;
   global g, dt;
-  v_ip1 := v_i - g * dt;
-  x_ip1 := x_i + v_i * dt;
-  return x_ip1, v_ip1;
-end;
+  v1 := v0 - g * dt;
+  x1 := x0 + v0 * dt;
+  return x1, v1;
+end:
 }{}
 \end{mapleinput}
-\mapleresult
-\begin{maplelatex}
-\mapleinline{inert}{2d}{Euler := proc (x_i, v_i) local v_ip1, x_ip1; global g, dt; v_ip1 := v_i-g*dt; x_ip1 := x_i+v_i*dt; return x_ip1, v_ip1 end proc}{\[\displaystyle {\it Euler}\, := \,\textbf{proc} (x_iv_i) \\
-\textbf{local} \,v_ip1,\,x_ip1; \\
-\textbf{global} \,g,\,dt; \\
-\mapleIndent{1} v_ip1\,:=\,v_i-g \ast dt;\\
-\mapleIndent{1} x_ip1\,:=\,x_i + v_i \ast dt;\\
-\mapleIndent{1} \textbf{return}\,x_ip1,\,v_ip1\\
-\textbf{end\ proc};\]}
-\end{maplelatex}
 \end{maplegroup}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{dt:=0.1;g:=0.1; 
-vv:=[0];
-xx:=[10]; 
-for i from 2 to 200 do
-
+\mapleinline{active}{1d}{dt:=0.1;g:=9.8; 
+tt,vv,xx:=[0.0],[0],[10.0];
+for i from 2 to 50 do
   x, v := Euler(xx[i-1],vv[i-1]);
+
+  tt :=[op(tt),tt[-1]+dt];
   xx :=[op(xx),x]; 
   vv :=[op(vv),v]; 
 end do:
 
 with(plots):
-listplot(xx);
-listplot(vv);
+lx:=listplot([tt,xx],color='blue');
+lv:=listplot([tt,vv],color='red');
+display(lx,lv);
 }{}
 \end{mapleinput}
 \mapleresult
@@ -69,87 +60,96 @@ listplot(vv);
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{g := .1}{\[\displaystyle g\, := \, 0.1\]}
+\mapleinline{inert}{2d}{g := 9.8}{\[\displaystyle g\, := \, 9.8\]}
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{vv := [0]}{\[\displaystyle {\it vv}\, := \,[0]\]}
+\mapleinline{inert}{2d}{tt, vv, xx := [0.], [0], [10.0]}{\[\displaystyle {\it tt},\,{\it vv},\,{\it xx}\, := \,[ 0.0],\,[0],\,[ 10.0]\]}
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{xx := [10]}{\[\displaystyle {\it xx}\, := \,[10]\]}
+\mapleinline{inert}{2d}{lx := PLOT(`...`)}{\[\displaystyle {\it lx}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{lv := PLOT(`...`)}{\[\displaystyle {\it lv}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
 \end{maplelatex}
 \mapleresult
 \mapleplot{Euler_ball_dropplot2d1.eps}
-\mapleresult
-\mapleplot{Euler_ball_dropplot2d2.eps}
 \end{maplegroup}
 \section{\textbf{Euler\_ball\_drop\_with\_air\_resistance}}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{Euler2 := proc (x_i, v_i)
-  local v_ip1, x_ip1;
+\mapleinline{active}{1d}{Euler2 := proc (x0, v0)
+  local v1, x1;
   global g, dt;
-  v_ip1 := v_i + (-cc * v_i- g) * dt;
-  x_ip1 := x_i + v_i * dt;
-  return x_ip1, v_ip1;
+  v1 := v0 + (-cc * v0- g) * dt;
+  x1 := x0 + v0 * dt;
+  return x1, v1;
 end:
 }{}
 \end{mapleinput}
 \end{maplegroup}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{dt:=0.1: g:=0.1: cc:=1:
-vv:=[0]: xx:=[10]: 
-for i from 2 to 100 do
+\mapleinline{active}{1d}{dt:=0.1: g:=9.8: cc:=1:
+tt,vv,xx:=[0.0],[0],[10.0];
+for i from 2 to 50 do
   x, v := Euler2(xx[i-1],vv[i-1]);
+  tt :=[op(tt),tt[-1]+dt];
   xx :=[op(xx),x]; 
   vv :=[op(vv),v]; 
 end do:
 
 with(plots):
-listplot(xx);
-listplot(vv);
-}{}
-\end{mapleinput}
-\mapleresult
-\mapleplot{Euler_ball_dropplot2d3.eps}
-\mapleresult
-\mapleplot{Euler_ball_dropplot2d4.eps}
-\end{maplegroup}
-\section{\textbf{バネの振動(Euler)}}
-\begin{maplegroup}
-\begin{mapleinput}
-\mapleinline{active}{1d}{Euler2 := proc (x_i, v_i)
-  local v_ip1, x_ip1;
-  global k, cc, dx;
-  v_ip1 := v_i + (- k * x_i - v_i * cc) * dt;
-  x_ip1 := x_i + v_i * dt;
-  return x_ip1, v_ip1;
-end;
+lx:=listplot([tt,xx],color='blue');
+lv:=listplot([tt,vv],color='red');
+display(lx,lv);
 }{}
 \end{mapleinput}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{Euler2 := proc (x_i, v_i) local v_ip1, x_ip1; global k, cc, dx; v_ip1 := v_i+(-k*x_i-v_i*cc)*dt; x_ip1 := x_i+v_i*dt; return x_ip1, v_ip1 end proc}{\[\displaystyle {\it Euler2}\, := \,\textbf{proc} (x_iv_i) \\
-\textbf{local} \,v_ip1,\,x_ip1; \\
-\textbf{global} \,k,\,cc,\,dx; \\
-\mapleIndent{1} v_ip1\,:=\,v_i + (-k \ast x_i-v_i \ast cc) \ast dt;\\
-\mapleIndent{1} x_ip1\,:=\,x_i + v_i \ast dt;\\
-\mapleIndent{1} \textbf{return}\,x_ip1,\,v_ip1\\
-\textbf{end\ proc};\]}
+\mapleinline{inert}{2d}{tt, vv, xx := [0.], [0], [10.0]}{\[\displaystyle {\it tt},\,{\it vv},\,{\it xx}\, := \,[ 0.0],\,[0],\,[ 10.0]\]}
 \end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{lx := PLOT(`...`)}{\[\displaystyle {\it lx}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{lv := PLOT(`...`)}{\[\displaystyle {\it lv}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
+\end{maplelatex}
+\mapleresult
+\mapleplot{Euler_ball_dropplot2d2.eps}
+\end{maplegroup}
+\section{\textbf{バネの振動(Euler)}}
+\begin{maplegroup}
+\begin{mapleinput}
+\mapleinline{active}{1d}{Euler3 := proc (x0, v0)
+  local v1, x1;
+  global k, dx;
+  v1 := v0 + (- k * x0 ) * dt;
+  x1 := x0 + v0 * dt;
+  return x1, v1;
+end:
+}{}
+\end{mapleinput}
 \end{maplegroup}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{dt:=0.1;k:=0.01;cc:=0.01;
-vv:=[0.01];
-xx:=[0]; 
-for i from 2 to 4000 do
-  x, y := Euler2(xx[i-1],vv[i-1]);
+\mapleinline{active}{1d}{dt:=0.1;k:=0.01;
+tt,vv,xx:=[0.0],[0],[10.0];
+for i from 2 to 5000 do
+  x, v := Euler3(xx[i-1],vv[i-1]);
+  tt :=[op(tt),tt[-1]+dt];
   xx :=[op(xx),x]; 
-  vv :=[op(vv),y]; 
+  vv :=[op(vv),v]; 
 end do:
+
+with(plots):
+lx:=listplot([tt,xx],color='blue');
+lv:=listplot([tt,vv],color='red');
+display(lx,lv);
 }{}
 \end{mapleinput}
 \mapleresult
@@ -162,27 +162,18 @@ end do:
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{cc := 0.1e-1}{\[\displaystyle {\it cc}\, := \, 0.01\]}
+\mapleinline{inert}{2d}{tt, vv, xx := [0.], [0], [10.0]}{\[\displaystyle {\it tt},\,{\it vv},\,{\it xx}\, := \,[ 0.0],\,[0],\,[ 10.0]\]}
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{vv := [0.1e-1]}{\[\displaystyle {\it vv}\, := \,[ 0.01]\]}
+\mapleinline{inert}{2d}{lx := PLOT(`...`)}{\[\displaystyle {\it lx}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{xx := [0]}{\[\displaystyle {\it xx}\, := \,[0]\]}
+\mapleinline{inert}{2d}{lv := PLOT(`...`)}{\[\displaystyle {\it lv}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
 \end{maplelatex}
-\end{maplegroup}
-\begin{maplegroup}
-\begin{mapleinput}
-\mapleinline{active}{1d}{with(plots):
-listplot(xx);listplot(vv);
-}{}
-\end{mapleinput}
 \mapleresult
-\mapleplot{Euler_ball_dropplot2d5.eps}
-\mapleresult
-\mapleplot{Euler_ball_dropplot2d6.eps}
+\mapleplot{Euler_ball_dropplot2d3.eps}
 \end{maplegroup}
 \section{\textbf{バネの振動(Runge-Kutta)}}
 \begin{maplegroup}
@@ -208,10 +199,9 @@ gg := (t,x,v)-> -k*x;
 \end{maplegroup}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{RungeKutta2 := proc(x_i,y_i,z_i)
-local h,k1,l1,k2,l2,k3,l3,k4,l4,kk,ll;
-global dx;
-h := dx;
+\mapleinline{active}{1d}{RungeKutta4 := proc(x_i,y_i,z_i,h)
+local k1,l1,k2,l2,k3,l3,k4,l4,kk,ll;
+
 k1:= h * ff(x_i, y_i, z_i);
 l1:= h * gg(x_i, y_i, z_i);
 k2:= h*ff(x_i+h/2, y_i+k1/2, z_i+l1/2);
@@ -221,9 +211,7 @@ l3:= h*gg(x_i+h/2, y_i+k2/2, z_i+l2/2);
 k4:= h*ff(x_i+h, y_i+k3, z_i+l3);
 l4:= h*gg(x_i+h, y_i+k3, z_i+l3);
 kk := 1/6*(k1+2*k2+2*k3+k4);
-
 ll := 1/6*(l1+2*l2+2*l3+l4);
-
 return kk,ll;
 end:
 }{}
@@ -231,41 +219,36 @@ end:
 \end{maplegroup}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{Euler2 := proc (x_i, v_i)
-  local v_ip1, x_ip1, kk, ll;
-  kk,ll := RungeKutta2(0,x_i,v_i);
-  x_ip1:= x_i+kk;
-  v_ip1:= v_i+ll;
-  return x_ip1, v_ip1;
-end;
+\mapleinline{active}{1d}{ode := proc (x0, v0)
+  local v1, x1, kk, ll;
+  kk,ll := RungeKutta4(0,x0,v0,dt);
+  x1:= x0+kk;
+  v1:= v0+ll;
+  return x1, v1;
+end:
 }{}
 \end{mapleinput}
-\mapleresult
-\begin{maplelatex}
-\mapleinline{inert}{2d}{Euler2 := proc (x_i, v_i) local v_ip1, x_ip1, kk, ll; kk, ll := RungeKutta2(0, x_i, v_i); x_ip1 := x_i+kk; v_ip1 := v_i+ll; return x_ip1, v_ip1 end proc}{\[\displaystyle {\it Euler2}\, := \,\textbf{proc} (x_iv_i) \\
-\textbf{local} \,v_ip1,\,x_ip1,\,kk,\,ll; \\
-\mapleIndent{1} kk,\,ll\,:=\,\mathit{RungeKutta2} (0,\,x_i,\,v_i);\\
-\mapleIndent{1} x_ip1\,:=\,x_i + kk;\\
-\mapleIndent{1} v_ip1\,:=\,v_i + ll;\\
-\mapleIndent{1} \textbf{return}\,x_ip1,\,v_ip1\\
-\textbf{end\ proc};\]}
-\end{maplelatex}
 \end{maplegroup}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{dx:=0.1;k:=0.01;cc:=0.0;
-vv:=[0.01];
-xx:=[0]; 
-for i from 2 to 4000 do
-  x, y := Euler2(xx[i-1],vv[i-1]);
+\mapleinline{active}{1d}{dt:=0.1;k:=0.01;
+tt,vv,xx:=[0.0],[0],[10.0];
+for i from 2 to 5000 do
+  x, v := ode(xx[i-1],vv[i-1]);
+  tt :=[op(tt),tt[-1]+dt];
   xx :=[op(xx),x]; 
-  vv :=[op(vv),y]; 
+  vv :=[op(vv),v]; 
 end do:
+
+with(plots):
+lx:=listplot([tt,xx],color='blue');
+lv:=listplot([tt,vv],color='red');
+display(lx,lv);
 }{}
 \end{mapleinput}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{dx := .1}{\[\displaystyle {\it dx}\, := \, 0.1\]}
+\mapleinline{inert}{2d}{dt := .1}{\[\displaystyle {\it dt}\, := \, 0.1\]}
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
@@ -273,100 +256,113 @@ end do:
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{cc := 0.}{\[\displaystyle {\it cc}\, := \, 0.0\]}
+\mapleinline{inert}{2d}{tt, vv, xx := [0.], [0], [10.0]}{\[\displaystyle {\it tt},\,{\it vv},\,{\it xx}\, := \,[ 0.0],\,[0],\,[ 10.0]\]}
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{vv := [0.1e-1]}{\[\displaystyle {\it vv}\, := \,[ 0.01]\]}
+\mapleinline{inert}{2d}{lx := PLOT(`...`)}{\[\displaystyle {\it lx}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{xx := [0]}{\[\displaystyle {\it xx}\, := \,[0]\]}
+\mapleinline{inert}{2d}{lv := PLOT(`...`)}{\[\displaystyle {\it lv}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
 \end{maplelatex}
-\end{maplegroup}
-\begin{maplegroup}
-\begin{mapleinput}
-\mapleinline{active}{1d}{with(plots):
-listplot(xx);listplot(vv);
-}{}
-\end{mapleinput}
 \mapleresult
-\mapleplot{Euler_ball_dropplot2d7.eps}
-\mapleresult
-\mapleplot{Euler_ball_dropplot2d8.eps}
+\mapleplot{Euler_ball_dropplot2d4.eps}
 \end{maplegroup}
 \section{\textbf{LCR回路}}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{Euler2 := proc (q_i, i_i)
-  local q_ip1, i_ip1;
-  global v_i, dx, RR, qc;
-  i_ip1 := v_i * dx + i_i - RR * i_i - q_i * qc;
-  q_ip1 := q_i + q_i * dx;
-  return q_ip1, i_ip1;
+\mapleinline{active}{1d}{Euler2 := proc (q0, i0)
+  local q1, i1;
+  global r,qc,v,dt;
+  i1 := i0 + (v - r*i0 -qc*q0) * dt;
+  q1 := q0 + i0 * dt;
+  return q1, i1;
 end;
 }{}
 \end{mapleinput}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{Euler2 := proc (q_i, i_i) local q_ip1, i_ip1; global v_i, dx, RR, qc; i_ip1 := v_i*dx+i_i-RR*i_i-q_i*qc; q_ip1 := q_i+q_i*dx; return q_ip1, i_ip1 end proc}{\[\displaystyle {\it Euler2}\, := \,\textbf{proc} (q_ii_i) \\
-\textbf{local} \,q_ip1,\,i_ip1; \\
-\textbf{global} \,v_i,\,dx,\,RR,\,qc; \\
-\mapleIndent{1} i_ip1\,:=\,v_i \ast dx + i_i-RR \ast i_i-q_i \ast qc;\\
-\mapleIndent{1} q_ip1\,:=\,q_i + q_i \ast dx;\\
-\mapleIndent{1} \textbf{return}\,q_ip1,\,i_ip1\\
+\mapleinline{inert}{2d}{Euler2 := proc (q0, i0) local q1, i1; global r, qc, v, dt; i1 := i0+(v-r*i0-qc*q0)*dt; q1 := q0+i0*dt; return q1, i1 end proc}{\[\displaystyle {\it Euler2}\, := \,\textbf{proc} (q0i0) \\
+\textbf{local} \,q1,\,i1; \\
+\textbf{global} \,r,\,qc,\,v,\,dt; \\
+\mapleIndent{1} i1\,:=\,i0 + (v-r \ast i0-qc \ast q0) \ast dt;\\
+\mapleIndent{1} q1\,:=\,q0 + i0 \ast dt;\\
+\mapleIndent{1} \textbf{return}\,q1,\,i1\\
 \textbf{end\ proc};\]}
 \end{maplelatex}
 \end{maplegroup}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{dx:=0.01;RR:=0.1;qc:=0.1;
-
-v_i:=1;
-ii:=[0];
-qq:=[2]; 
-for i from 2 to 100 do
+\mapleinline{active}{1d}{dt,r, qc,v := 0.01, 0.5 ,1, 1;
+tt,ii,qq:=[0],[0.0],[0];
+for i from 2 to 2000 do
   q, i2 := Euler2(qq[i-1],ii[i-1]);
+  tt :=[op(tt),tt[-1]+dt];
   qq :=[op(qq),q]; 
   ii :=[op(ii),i2]; 
 end do:
+
+
+with(plots):
+lx:=listplot([tt,qq],color='blue');
+lv:=listplot([tt,ii],color='red');
+display(lx,lv);
 }{}
 \end{mapleinput}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{dx := 0.1e-1}{\[\displaystyle {\it dx}\, := \, 0.01\]}
+\mapleinline{inert}{2d}{dt, r, qc, v := 0.1e-1, .5, 1, 1}{\[\displaystyle {\it dt},\,r,\,{\it qc},\,v\, := \, 0.01,\, 0.5,\,1,\,1\]}
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{RR := .1}{\[\displaystyle {\it RR}\, := \, 0.1\]}
+\mapleinline{inert}{2d}{tt, ii, qq := [0], [0.], [0]}{\[\displaystyle {\it tt},\,{\it ii},\,{\it qq}\, := \,[0],\,[ 0.0],\,[0]\]}
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{qc := .1}{\[\displaystyle {\it qc}\, := \, 0.1\]}
+\mapleinline{inert}{2d}{lx := PLOT(`...`)}{\[\displaystyle {\it lx}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
 \end{maplelatex}
 \mapleresult
 \begin{maplelatex}
-\mapleinline{inert}{2d}{v_i := 1}{\[\displaystyle {\it v\_i}\, := \,1\]}
+\mapleinline{inert}{2d}{lv := PLOT(`...`)}{\[\displaystyle {\it lv}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
 \end{maplelatex}
 \mapleresult
-\begin{maplelatex}
-\mapleinline{inert}{2d}{ii := [0]}{\[\displaystyle {\it ii}\, := \,[0]\]}
-\end{maplelatex}
-\mapleresult
-\begin{maplelatex}
-\mapleinline{inert}{2d}{qq := [2]}{\[\displaystyle {\it qq}\, := \,[2]\]}
-\end{maplelatex}
+\mapleplot{Euler_ball_dropplot2d5.eps}
 \end{maplegroup}
 \begin{maplegroup}
 \begin{mapleinput}
-\mapleinline{active}{1d}{with(plots):
-listplot(qq);listplot(ii);
-}{}
+\mapleinline{active}{1d}{dt,r, qc,v := 0.01, 0.5 ,1, 0;
+tt,ii,qq:=[0],[0.0],[1];
+for i from 2 to 2000 do
+  q, i2 := Euler2(qq[i-1],ii[i-1]);
+  tt :=[op(tt),tt[-1]+dt];
+  qq :=[op(qq),q]; 
+  ii :=[op(ii),i2]; 
+end do:
+
+with(plots):
+lx:=listplot([tt,qq],color='blue');
+lv:=listplot([tt,ii],color='red');
+display(lx,lv);}{}
 \end{mapleinput}
 \mapleresult
-\mapleplot{Euler_ball_dropplot2d9.eps}
+\begin{maplelatex}
+\mapleinline{inert}{2d}{dt, r, qc, v := 0.1e-1, .5, 1, 0}{\[\displaystyle {\it dt},\,r,\,{\it qc},\,v\, := \, 0.01,\, 0.5,\,1,\,0\]}
+\end{maplelatex}
 \mapleresult
-\mapleplot{Euler_ball_dropplot2d10.eps}
+\begin{maplelatex}
+\mapleinline{inert}{2d}{tt, ii, qq := [0], [0.], [1]}{\[\displaystyle {\it tt},\,{\it ii},\,{\it qq}\, := \,[0],\,[ 0.0],\,[1]\]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{lx := PLOT(`...`)}{\[\displaystyle {\it lx}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
+\end{maplelatex}
+\mapleresult
+\begin{maplelatex}
+\mapleinline{inert}{2d}{lv := PLOT(`...`)}{\[\displaystyle {\it lv}\, := \,{\it PLOT} \left( \mbox {{\tt `...`}} \right) \]}
+\end{maplelatex}
+\mapleresult
+\mapleplot{Euler_ball_dropplot2d6.eps}
 \end{maplegroup}
 \begin{maplegroup}
 \begin{mapleinput}
